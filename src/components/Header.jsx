@@ -1,6 +1,6 @@
 import React from 'react'
 import { assets } from '../assets/assets'
-import { List } from './List'
+
 
 export const Header = () => {
   return (
@@ -23,7 +23,8 @@ export const Header = () => {
             </div>
         </div>
         <img src={assets.gradientBackground} alt="" className='absolute -top-40 -z-1 opacity-50 '/>
-        <List/>
+       
+       
     </div>
   )
 }

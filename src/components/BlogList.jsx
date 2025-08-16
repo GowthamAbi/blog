@@ -1,13 +1,16 @@
 import { clamp, motion, spring } from 'motion/react'
 import { div, text } from 'motion/react-client'
 import React, { useState } from 'react'
+import { assets, blog_data, blogCategories } from '../assets/assets'
+import { BlogCards } from './BlogCards'
 
-export const List = () => {
+export const BlogList = () => {
 
-    const list=["All","Technology","Startup","LifeStyle","Finace"]
+    const list=['All', 'Technology', 'Startup', 'Lifestyle', 'Finance']
     const[menu,setMenu]=useState("All")
   return (
         <>
+        
         <div className='flex justify-center gap-2 my-6 sm:my-8 max-w-2xl m-auto max-sm:text-s flex-wrap relative' >
             {list.map((item,index)=>(
                 <div key={index} className='relative'>
@@ -22,6 +25,10 @@ export const List = () => {
                     }</button>
                     </div>))}
         </div>
+        <div  className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  xl:grid-cols-4 gap-8 mb-24 mx-8 sm:mx-16 xl:mx-40 '>
+          {blog_data.filter((blog)=>menu==="All"?true:blog.category===menu).map((blog)=><BlogCards key={blog._id} blog={blog}/>)}
+        </div>
+        
         </>
   )
 }
