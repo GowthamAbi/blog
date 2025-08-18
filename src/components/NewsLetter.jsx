@@ -8,7 +8,7 @@ export const NewsLetter = () => {
             <h5 className='text-gray-500'>Subscribe to get the latest blog, new tech, and exclusive news.</h5>
             <form className='flex border border-gray-400 mx-auto max-w-lg bg-white overflow-hidden max-sm:scale-75 h-12  rounded-sm  ' >
                 <input type="text" placeholder='Enter Your Email' className='w-full pl-2' required="true"/>
-                <button>Subscribe</button>
+                <button className='bg-primary text-white text-sm p-2 rounded-esm'>Subscribe</button>
             </form>
         </div>
     </div>
