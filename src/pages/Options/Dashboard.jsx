@@ -7,7 +7,7 @@ export const Dashboard = () => {
   return (
     <div>
         <Navbar/>
-        <div className='flex h-[calc(100vh-70px)]'>
+        <div className='flex h-[calc(100vh-)]'>
         <Sidebar/>
         {Outlet}
         </div>
