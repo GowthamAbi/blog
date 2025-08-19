@@ -3,7 +3,8 @@ import './App.css'
 import Home from './pages/Home'
 import Blog from './pages/Blog'
 import AdminPage from './pages/AdminPage'
-import Dashboard from './pages/Dashboard'
+import { Dashboard } from './pages/Options/Dashboard'
+
 
 
 

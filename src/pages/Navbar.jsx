@@ -3,7 +3,7 @@ import { assets } from '../assets/assets'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { Sidebar } from '../components/Sidebar'
 
-const Dashboard = () => {
+const Navbar = () => {
   const navigate=useNavigate()
   return (
     <div className='mx-4'>
@@ -13,10 +13,9 @@ const Dashboard = () => {
            
         </div>
          <hr className='text-gray-500' />
-        <Sidebar/>
-        {Outlet}
+
     </div>
   )
 }
 
-export default Dashboard
+export default Navbar
