@@ -84,7 +84,7 @@ function Blog() {
         </div>
       
       <Footer/>
-  </div>:<h1>Looding.....</h1>
+  </div>:<h1>Looding....</h1>
   )
 }
 
