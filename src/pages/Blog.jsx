@@ -4,6 +4,7 @@ import { assets, blog_data, comments_data } from '../assets/assets'
 import { div, h1 } from 'motion/react-client'
 import Navbar from './Navbar'
 import moment from 'moment';
+import { Footer } from '../components/Footer'
 
 function Blog() {
   const {id}=useParams()
@@ -66,15 +67,19 @@ function Blog() {
   <button className=' bg-primary w-30  px-4 py-2 rounded-sm text-white text-lg'>Submit</button>
 
 </div>
-      <div>
+      <div className='mx-auto max-w-xl mt-20'>
         <p>Share this article on social media</p>
-        <div className='flex mx-auto'>
+        <div className='inline-flex gap-2 mt-4' >
           <img src={assets.facebook_icon} alt="" />
           <img src={assets.googleplus_icon} alt="" />
           <img src={assets.twitter_icon} alt="" />
         </div>
       </div>
-  </div>:<h1>Loading.....</h1>
+      
+      <Footer/>
+  </div>
+  
+  :<h1>Loading.....</h1>
 }
 
 export default Blog
