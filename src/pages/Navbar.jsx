@@ -16,7 +16,7 @@ const Navbar = () => {
        
 
     </div>
-      <hr className='text-gray-500' />
+      
     </>
   )
 }
