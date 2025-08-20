@@ -53,11 +53,7 @@ export const Dashboard = () => {
             <th className=''>ACTION </th>
           </thead>
           <tbody>
-            {assets.blog_data.map((blogs,index)=>(
-              <div key={index}>
-              <tr>{index+1}</tr>
-              </div>
-            ))}
+            
           </tbody>
           </table>
         </div>
