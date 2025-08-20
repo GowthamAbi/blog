@@ -17,7 +17,7 @@ function AdminPage() {
         <input type="text" placeholder='Enter Password' className='focus:outline-none focus:border-none focus:ring-0 border-b-2 border-primary/15'/>
       </form>
       <div className='flex items-center justify-center w-full bg-primary p-2 rounded-sm
-       text-white text-sm cursor-pointer' onClick={()=>navigate('/admin')}>
+       text-white text-sm cursor-pointer' onClick={()=>navigate('/admin/dashboard')}>
       <button  className='cursor-pointer'  >Login</button>
       </div>
         </div>
