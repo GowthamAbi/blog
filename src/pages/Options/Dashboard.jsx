@@ -3,6 +3,7 @@ import Navbar from '../Navbar'
 import { Sidebar } from '../../components/Sidebar'
 import { Outlet } from 'react-router-dom'
 import { assets } from '../../assets/assets'
+import { div, tr } from 'motion/react-client'
 
 export const Dashboard = () => {
   const [blog,setBlog]=useState(0)
@@ -51,6 +52,13 @@ export const Dashboard = () => {
             <th className=' '>	STATUS  </th>
             <th className=''>ACTION </th>
           </thead>
+          <tbody>
+            {assets.blog_data.map((blogs,index)=>(
+              <div key={index}>
+              <tr>{index+1}</tr>
+              </div>
+            ))}
+          </tbody>
           </table>
         </div>
     </div>
