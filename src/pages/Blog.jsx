@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { assets, blog_data } from '../assets/assets'
+import { assets, blog_data, comments_data } from '../assets/assets'
 import { div, h1 } from 'motion/react-client'
 import Navbar from './Navbar'
 import moment from 'moment';
@@ -35,6 +35,45 @@ function Blog() {
   <p dangerouslySetInnerHTML={{__html:data.description}} className='rich-text mx-auto lg:max-w-4xl sm:max-w-2xl '></p>
   
 </div>
+<div>
+  <div className='mx-auto max-w-3xl mt-14 mb-10'>
+    <p className='-'>Comments( {comments_data.length} )</p>
+    <div className='flex flex-col gap-4  '>
+      
+      {
+        comments_data.map((item,index)=>(
+          <div key={index} className='relative  bg-primary/2 border border-primary/5 max-w-sm p-4 text-gray-600'>
+            <div className='flex items-center gap-2 mb-2'>
+              <img src={assets.user_icon} className='w-6'/>
+              <h1>{item.name}</h1>
+              
+            </div>
+            <p className='text-sm max-w-md ml-8'>{item.content}</p>
+            <p className='text-end'> {moment(item.createdAt).fromNow()}</p>
+            </div>
+        ))
+      }
+    </div>
+    </div>
+</div>
+
+<div className='mx-auto max-w-xl  flex flex-col gap-6 '>
+  <h1 className='font-bold text-lg'>Add Comments</h1>
+  <form className='flex flex-col gap-6   '>
+    <input type="text" placeholder='Name' className='border-1 border-gray-300 rounded px-2 py-4 focus:outline-none  focus:ring-0'/>
+    <input type="text" placeholder='Your Comments' className='pb-14 border-gray-300 pt-4 px-2 border-1 rounded focus:outline-none  focus:ring-0'/>
+  </form>
+  <button className=' bg-primary w-30  px-4 py-2 rounded-sm text-white text-lg'>Submit</button>
+
+</div>
+      <div>
+        <p>Share this article on social media</p>
+        <div className='flex mx-auto'>
+          <img src={assets.facebook_icon} alt="" />
+          <img src={assets.googleplus_icon} alt="" />
+          <img src={assets.twitter_icon} alt="" />
+        </div>
+      </div>
   </div>:<h1>Loading.....</h1>
 }
 

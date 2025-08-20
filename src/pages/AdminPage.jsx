@@ -14,7 +14,7 @@ function AdminPage() {
         <label >Email</label>
         <input type="email" className='focus:outline-none focus:border-none focus:ring-0 border-b-2 border-primary/15' placeholder='Enter Mail'/>
         <label >Password</label>
-        <input type="text" placeholder='Enter Password' className='focus:outline-none focus:border-none focus:ring-0 border-b-2 border-primary/15'/>
+        <input type="text" placeholder='Enter Password' className='focus:outline-none  focus:ring-0 border-b-2 border-primary/15'/>
       </form>
       <div className='flex items-center justify-center w-full bg-primary p-2 rounded-sm
        text-white text-sm cursor-pointer' onClick={()=>navigate('/admin/dashboard')}>
