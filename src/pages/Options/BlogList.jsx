@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import TableData from '../../components/Data/TableData'
-import { assets } from '../../assets/assets'
-import { tr } from 'motion/react-client'
+import { assets,blog_data } from '../../assets/assets'
+import { div, td, tr } from 'motion/react-client'
 
 export default function BlogList() {
 
-  const[data,setData]=useState('')
+  const[data,setData]=useState([])
 const fetchBlogs=async()=>{
-  setData(assets.blog_data)
+  setData(blog_data)
 }
 
 useEffect(()=>{
@@ -30,17 +30,10 @@ useEffect(()=>{
               </tr>
             </thead>
             <tbody>
-
-              {
-                data.map((blog,index)=>{
-                  <tr key={index}>
-                    <td>{index+1}</td>
-                    <td>{data.title}</td>
-                  </tr>
-
-                })
-              }
-              
+              {data.map((blog,index)=>{
+              return <TableData  key={blog._id}  blog={data} fetchblogs={fetchBlogs} index={index+1}/>
+                  })}
+        
             </tbody>
           </table>
         </div>
