@@ -5,6 +5,7 @@ import { div, h1 } from 'motion/react-client'
 import Navbar from './Navbar'
 import moment from 'moment';
 import { Footer } from '../components/Footer'
+import Loader from '../components/Loader'
 
 function Blog() {
   const {id}=useParams()
@@ -68,7 +69,7 @@ function Blog() {
           <h1 className='font-bold text-lg'>Add Comments</h1>
           <form className='flex flex-col gap-6   '>
             <input type="text" placeholder='Name' className='border-1 border-gray-300 rounded px-2 py-4 focus:outline-none  focus:ring-0 lg:max-w-lg sm:max-w-lg'/>
-            <input type="text" placeholder='Your Comments' className='pb-14 border-gray-300 pt-4 px-2 border-1 rounded focus:outline-none  focus:ring-0 lg:max-w-lg sm:max-w-lg'/>
+            <textarea type="text" placeholder='Your Comments' className='pb-14 border-gray-300 pt-4 px-2 border-1 rounded focus:outline-none  focus:ring-0 lg:max-w-lg sm:max-w-lg'/>
           </form>
           <button className=' bg-primary w-30  px-4 py-2 rounded-sm text-white text-lg'>Submit</button>
 
@@ -84,7 +85,7 @@ function Blog() {
         </div>
       
       <Footer/>
-  </div>:<h1>Looding.....</h1>
+  </div>:<Loader/>
   )
 }
 
