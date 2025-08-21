@@ -1,14 +1,28 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../Navbar'
 import { Sidebar } from '../../components/Sidebar'
-import { Outlet } from 'react-router-dom'
-import { assets } from '../../assets/assets'
+import { data, Outlet } from 'react-router-dom'
+import { assets ,blog_data} from '../../assets/assets'
 import { div, tr } from 'motion/react-client'
+import TableData from '../../components/Data/TableData'
 
 export const Dashboard = () => {
-  const [blog,setBlog]=useState(0)
-  const [comment,setComment]=useState(0)
-  const [draft,setDraft]=useState(0)
+
+  const[dashboardData,setDashboardData]=useState({
+    blog:0,
+    comments:0,
+    drafts:0,
+    recentBlogs:[]
+  })
+
+  const featchdashboard=async()=>{
+    setDashboardData(dashboardData)
+  }
+
+  useEffect(()=>{
+    featchdashboard()
+  },[])
+
   return (
     <div className='bg-blue-300/10 w-full  px-8 pt-8 gap-4'>
 
@@ -16,7 +30,7 @@ export const Dashboard = () => {
         <div className='inline-flex shadow-sm items-center text-center gap-2 py-4 rounded-sm bg-white w-50 px-4'>
           <img src={assets.dashboard_icon_1} />
          <div>
-          {blog}
+          {dashboardData.blog}
           <h5>Blogs</h5>
           </div>       
         </div>
@@ -24,7 +38,7 @@ export const Dashboard = () => {
          <div className='inline-flex shadow-sm items-center text-center gap-2 py-4 rounded-sm bg-white w-50 px-4'>
           <img src={assets.dashboard_icon_2} />
          <div>
-          {comment}
+          {dashboardData.comments}
           <h5>Comment</h5>
           </div>       
         </div>
@@ -32,7 +46,7 @@ export const Dashboard = () => {
          <div className='inline-flex shadow-sm  items-center text-center gap-2 py-4 rounded-sm bg-white w-50 px-4'>
           <img src={assets.dashboard_icon_3} />
          <div>
-          {draft}
+          {dashboardData.drafts}
           <h5>Drafts</h5>
           </div>       
         </div>
@@ -52,9 +66,9 @@ export const Dashboard = () => {
               <th scope='col' className='px-2 py-4 max-sm:hidden'>date</th>
               <th scope='col' className='px-2 py-4 max-sm:hidden'>status</th>
               <th scope='col' className='px-2 py-4'>action</th>
-
               </tr>
             </thead>
+                {}
             </table>
             
           </div>
