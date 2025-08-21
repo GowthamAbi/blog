@@ -8,7 +8,7 @@ export default function() {
     <div>
         <div>
         <Navbar/>
-        <div className='flex h-[calc(100vh-)]'>
+        <div className='flex h-[calc(100vh-70px)]'>
         <Sidebar/>
         <Outlet/>
         </div>

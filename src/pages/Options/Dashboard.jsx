@@ -43,20 +43,21 @@ export const Dashboard = () => {
           <h5 className=''>Latest Blogs</h5>
         </div>
 
-        <div className='bg-white text-gray-500 mx-8 flex justify-between w-2/4 '>
-          <table className='table-auto border-collapse border-b-1 border-gray-500 py-4  w-full'>
-          <thead className=' text-left py-4 '>
-            <th className='p-4'>#</th>
-            <th className='  '>	BLOG TITLE  </th>
-            <th className=' '>DATE </th>
-            <th className=' '>	STATUS  </th>
-            <th className=''>ACTION </th>
-          </thead>
-          <tbody>
+          <div className='relative max-w-4xl overflow-auto shadow rounded-lg text-sm scorllbar-hidden bg-white '>
+            <table className='w-full text-sm text-gray-600'>
+              <thead className='text-sm text-gray-600 uppercase text-left'>
+              <tr>
+              <th scope='col' className='px-2 py-4 xl:px-6'>#</th>
+              <th scope='col' className='px-2 py-4'>Blogs</th>
+              <th scope='col' className='px-2 py-4 max-sm:hidden'>date</th>
+              <th scope='col' className='px-2 py-4 max-sm:hidden'>status</th>
+              <th scope='col' className='px-2 py-4'>action</th>
+
+              </tr>
+            </thead>
+            </table>
             
-          </tbody>
-          </table>
-        </div>
+          </div>
     </div>
   )
 }

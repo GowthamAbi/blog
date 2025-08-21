@@ -21,7 +21,7 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/blog/:id' element={<Blog/>}/>
         <Route path='/adminlogin' element={<AdminPage/>}/>
-        <Route path='/admin' element={<Layout/>}>
+        <Route path='/admin' element={true?<Layout/>:<AdminPage/>}>
         <Route index path='dashboard' element={<Dashboard/>}/>
         <Route  path='addblogs' element={<AddBlog/>}/>
         <Route path='bloglist' element={<BlogList/>}/>
