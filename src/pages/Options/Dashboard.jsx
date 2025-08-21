@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../Navbar'
 import { Sidebar } from '../../components/Sidebar'
-import { assets } from '../../assets/assets'
+import { assets,dashboard_data } from '../../assets/assets'
 import TableData from '../../components/Data/TableData'
 
 export const Dashboard = () => {
@@ -13,7 +13,7 @@ export const Dashboard = () => {
   })
 
   const featchdashboard = async () => {
-    setDashboardData(dashboardData) // <- replace later with API call
+    setDashboardData(dashboard_data) // <- replace later with API call
   }
 
   useEffect(() => {
