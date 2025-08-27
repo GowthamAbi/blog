@@ -9,6 +9,7 @@ import BlogList from './pages/Options/BlogList'
 import Comments from './pages/Options/Comments'
 import Layout from './pages/Layout'
 import AddBlogs from './pages/Options/AddBlogs'
+import 'quill/dist/quill.snow.css'
 
 
 
