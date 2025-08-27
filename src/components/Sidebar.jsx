@@ -28,6 +28,11 @@ export const Sidebar = () => {
       <img src={assets.list_icon} className=' min-w-4 w-5'/>
       <h5 className='hidden md:inline-block'>Comments</h5>
      </NavLink>
+
+     <NavLink to="/admin/addblogss"className={({isActive})=>`flex items-center gap-3 py-3.5 px-4 
+      md:px-8 ${isActive&&'bg-primary/10 border-r-4 border-primary'} `}>
+        <h5 className='hidden md:inline-block'>Add Blogs</h5>
+     </NavLink>
     </div>
 
     

@@ -8,6 +8,7 @@ import AddBlog from './pages/Options/AddBlog'
 import BlogList from './pages/Options/BlogList'
 import Comments from './pages/Options/Comments'
 import Layout from './pages/Layout'
+import AddBlogs from './pages/Options/AddBlogs'
 
 
 
@@ -26,6 +27,7 @@ function App() {
         <Route  path='addblogs' element={<AddBlog/>}/>
         <Route path='bloglist' element={<BlogList/>}/>
         <Route path='comments' element={<Comments/>}/>
+        <Route path='addblogss' element={<AddBlogs/>}/>
         </Route>
       </Routes>
     </>
