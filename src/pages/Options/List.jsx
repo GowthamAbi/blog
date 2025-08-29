@@ -19,7 +19,7 @@ export default function List() {
     <div className='bg-blue-400/10 w-full  h-screen '>
         <div>
             <h5 className=' text-center py-8 text-2xl font-bold  '>Blog List</h5>
-            <div className= 'overflow-scroll  bg-white h-auto max-w-2xl lg:mx-auto md:mx-auto mx-2 rounded-2xl  '>
+            <div className= 'overflow-scroll  bg-white h-auto max-w-2xl lg:mx-auto md:mx-auto  rounded-t-2xl '>
                 <table className='w-full' >
                     <thead className='uppercase bg-gray-500 '>
                         <tr>
