@@ -31,7 +31,7 @@ const Comments = () => {
 
   return (
     <div className="bg-blue-300/10 w-full px-8 pt-8 gap-4">
-      <div className="inline-flex py-6 px-2 gap-2">
+      <div className="inline-flex py-6 px-2 gap0-2">
         <img src={assets.dashboard_icon_2} alt="comments icon" />
         <h5 className="font-semibold">Comments</h5>
       </div>

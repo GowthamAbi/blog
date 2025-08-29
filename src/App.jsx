@@ -11,6 +11,7 @@ import Layout from './pages/Layout'
 import AddBlogs from './pages/Options/AddBlogs'
 import 'quill/dist/quill.snow.css'
 import List from './pages/Options/List'
+import CommentsList from './pages/Options/CommentsList'
 
 
 
@@ -31,6 +32,8 @@ function App() {
         <Route path='comments' element={<Comments/>}/>
         <Route path='addblogss' element={<AddBlogs/>}/>
         <Route path='list' element={<List/>}/>
+        <Route path='commentslist' element={<CommentsList/>}/>
+        
         </Route>
       </Routes>
     </>

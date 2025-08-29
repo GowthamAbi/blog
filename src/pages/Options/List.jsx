@@ -16,12 +16,12 @@ export default function List() {
     },[])
 
   return (
-    <div className='bg-blue-400/10 w-full h-250 '>
+    <div className='bg-blue-400/10 w-full  h-screen '>
         <div>
-            <h5>Blog List</h5>
-            <div className='bg-white max-w-xl h-screen lg:mx-auto md:mx-auto mx-2 '>
+            <h5 className=' text-center py-8 text-2xl font-bold  '>Blog List</h5>
+            <div className= 'overflow-scroll  bg-white h-auto max-w-2xl lg:mx-auto md:mx-auto mx-2 rounded-2xl  '>
                 <table className='w-full' >
-                    <thead className='uppercase'>
+                    <thead className='uppercase bg-gray-500 '>
                         <tr>
                             <td scope='col' className='px-2 py-2' >#</td>
                             <td scope='col' className='px-2 py-2' >Blog Title</td>
@@ -33,7 +33,7 @@ export default function List() {
                     <tbody>
                         { data.map((blog,index)=>{
                           return <Data key={blog._id} blog={blog} fetchData={fetchData} index={index+1} />
-                                    })
+                        })
                         }
                     </tbody>
                 </table>
