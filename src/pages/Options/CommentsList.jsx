@@ -18,7 +18,7 @@ useEffect(()=>{
     <div className='bg-blue-300/10 w-full px-4 py-4'>
       <h5 className=' text-center py-4 font-bold text-xl'> Comments List </h5>
       
-      <div className='overflow-scroll bg-white h-auto max-w-2xl lg:mx-auto md:mx-auto rounded-t-2xl '>
+      <div className='overflow-x-auto scroll-hidden bg-white h-auto max-w-2xl lg:mx-auto md:mx-auto rounded-t-2xl '>
         <table className='w-full '>
 
           <thead className='uppercase bg-gray-500'>
