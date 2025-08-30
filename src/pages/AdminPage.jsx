@@ -48,6 +48,7 @@ function AdminPage() {
       <button  className='cursor-pointer'  >Login</button>
       </div>
         </div>
+        
       </div>
       {console.log(email,password)}
     </div>
