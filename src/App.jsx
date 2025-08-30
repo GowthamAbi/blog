@@ -12,7 +12,7 @@ import AddBlogs from './pages/Options/AddBlogs'
 import 'quill/dist/quill.snow.css'
 import List from './pages/Options/List'
 import CommentsList from './pages/Options/CommentsList'
-
+import {Toaster }from 'react-hot-toast'
 
 
 
@@ -20,7 +20,8 @@ function App() {
 
 
   return (
-    <>
+    <><div>
+      <Toaster/>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/blog/:id' element={<Blog/>}/>
@@ -36,6 +37,7 @@ function App() {
         
         </Route>
       </Routes>
+      </div>
     </>
   )
 }

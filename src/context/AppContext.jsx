@@ -35,9 +35,10 @@ export const AppProvider=({children})=>{
         const token=localStorage.getItem('token')
         
 
-        if(token)
+        if(token){
             setToken(token)
-        axios.defaults.headers.common['Authorization']=`${token}`
+            axios.defaults.headers.common['Authorization']=`${token}`
+        }
 
     },[])
     const value={axios,navigate,token,setToken,blogs,setBlogs,input,setInput}
