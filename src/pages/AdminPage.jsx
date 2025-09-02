@@ -17,11 +17,12 @@ function AdminPage() {
     
       const responces=await api.post('/adminlogin',{email,password})
         
-      navigate('/')
-      if(data) {
+      
+      if(responces.data) {
         setToken(responces.data.token)
         localStorage.setItem('token',responces.data.token)
         axios.defaults.headers.common['Authorization']=responces.data.token
+        navigate('/admin/dashboard')
       }
      else{
       toast.error("Login Issue")
