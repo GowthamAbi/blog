@@ -2,26 +2,29 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {useAppContext} from '../context/AppContext.jsx'
 import toast from 'react-hot-toast'
+import { api } from '../service/api.js'
 
 function AdminPage() {
 
   const{axios,setToken}=useAppContext()
   const[email,setEmail]=useState('')
   const[password,setPassword]=useState('')
+  const navigate=useNavigate()
 
-  const handleSubmit=async(e)=>{
-     e.preventDefault()
+  const handleSubmit=async()=>{
+     console.log("handle Submit Enter")
     try {
-
-      const{data}=await axios.post('/',{email,password})
-
+    
+      const responces=await api.post('/adminlogin',{email,password})
+        
+      navigate('/')
       if(data) {
-        setToken(data.token)
-        localStorage.setItem('token',data.token)
-        axios.defaults.headers.common['Authorization']=data.token
+        setToken(responces.data.token)
+        localStorage.setItem('token',responces.data.token)
+        axios.defaults.headers.common['Authorization']=responces.data.token
       }
      else{
-      toast.error.message
+      toast.error("Login Issue")
      }
     } catch (error) {
       
@@ -29,7 +32,7 @@ function AdminPage() {
     }
   }
 
-  const navigate=useNavigate()
+
   return (
     <>
     <div className='flex items-center justify-center h-screen'>
@@ -41,16 +44,17 @@ function AdminPage() {
         <label >Email</label>
         <input type="email" className='focus:outline-none focus:border-none focus:ring-0 border-b-2 border-primary/15' placeholder='Enter Mail' onChange={(e)=>{setEmail(e.target.value)}}/>
         <label >Password</label>
-        <input type="text" placeholder='Enter Password' className='focus:outline-none  focus:ring-0 border-b-2 border-primary/15' onChange={(e)=>{setPassword(e.target.value)}}/>
-      </form>
+        <input type="password" placeholder='Enter Password' className='focus:outline-none  focus:ring-0 border-b-2 border-primary/15' onChange={(e)=>{setPassword(e.target.value)}}/>
+      
       <div className='flex items-center justify-center w-full bg-primary p-2 rounded-sm
-       text-white text-sm cursor-pointer' onClick={()=>navigate('/admin/dashboard')}>
-      <button  className='cursor-pointer'  >Login</button>
+       text-white text-sm cursor-pointer' >
+      <button type='submit'  className='cursor-pointer'  >Login</button>
       </div>
+      </form>
         </div>
         
       </div>
-      {console.log(email,password)}
+      
     </div>
     
     </>
