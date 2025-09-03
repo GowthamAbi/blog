@@ -1,13 +1,13 @@
 import { List } from 'lucide-react'
 import { assets } from '../../assets/assets'
 import Quill from 'quill'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function AddBlogs() {
+const[image,setImage]=useState(null)
 
 
-
-    const quillRef=useRef(null)
+    const quillRef=useRef(false)
     const editRef=useRef()
 
 useEffect(()=>{
@@ -23,10 +23,11 @@ useEffect(()=>{
       <form className='bg-white border border-gray-300 rounded-sm max-w-2xl md:mx-10 lg:mx-auto  sm:mx-4 mx-4 sm:w-auto px-6 py-6'>
         
         <div >
-          <input type="file" id="fileinput" className='hidden' />
+        
           <h5 className='py-4'>Upload thumbnail</h5>
-         <label htmlFor="fileinput">
-          <img src={assets.upload_area} alt="" className='cursor-pointer' />
+         <label htmlFor="image">
+          <img src={!image?assets.upload_area:URL.createObjectURL(image)} alt="" className='cursor-pointer mt-2 h-16 rounded' />
+            <input type="file" id="image" hidden required className='hidden' onChange={(e)=>setImage(e.target.files[0])} />
         </label>
         </div>
 
