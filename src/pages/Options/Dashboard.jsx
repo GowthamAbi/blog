@@ -3,6 +3,7 @@ import Navbar from '../Navbar'
 import { Sidebar } from '../../components/Sidebar'
 import { assets,dashboard_data } from '../../assets/assets'
 import TableData from '../../components/Data/TableData'
+import { api } from '../../service/api'
 
 export const Dashboard = () => {
   const [dashboardData, setDashboardData] = useState({
@@ -13,17 +14,22 @@ export const Dashboard = () => {
   })
 
   const featchdashboard = async () => {
-    setDashboardData(dashboard_data) // <- replace later with API call
+    try {
+      const data=await api.get('/admin/dashboard')
+
+      setDashboardData(data)
+      console.log(data)
+
+    } catch (error) {
+      
+    }
   }
 
   useEffect(() => {
     featchdashboard()
   }, [])
 
-  useEffect(() => {
-    console.log("Dashboard Data:", dashboardData);
-  }, [dashboardData]);
-
+ 
   return (
     <div className="bg-blue-300/10 w-full px-8 pt-8 gap-6">
       {/* Stats Cards */}

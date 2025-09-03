@@ -11,10 +11,6 @@ const Navbar = () => {
   // Remove token
   localStorage.removeItem('token');
 
-  // Optionally also clear axios header
-  delete api.defaults.headers.common['Authorization'];
-  res.clearCookie("token");
-
   // Redirect to login
   navigate('/adminlogin');
   }

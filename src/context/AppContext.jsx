@@ -19,7 +19,7 @@ export const AppProvider=({children})=>{
 
     const fetchBlogs=async()=>{
         try {
-            const {data}=await api.get('/')
+            const {data}=await api.get('/blog/get')
 
             data.success?setBlogs(data):toast.error(data.message)
 
