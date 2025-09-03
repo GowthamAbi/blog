@@ -3,8 +3,9 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 import toast from "react-hot-toast";
+import { api } from "../service/api";
 
-axios.defaults.baseURI=import.meta.env.VITE_BASEURI
+
 
 
 const AppContext=createContext()
@@ -18,7 +19,7 @@ export const AppProvider=({children})=>{
 
     const fetchBlogs=async()=>{
         try {
-            const {data}=await axios.get('/')
+            const {data}=await api.get('/')
 
             data.success?setBlogs(data):toast.error(data.message)
 

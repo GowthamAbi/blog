@@ -11,30 +11,36 @@ function AdminPage() {
   const[password,setPassword]=useState('')
   const navigate=useNavigate()
 
-  const handleSubmit=async()=>{
+  const handleSubmit=async(e)=>{
+    e.preventDefault()
      console.log("handle Submit Enter")
     try {
     
       const responces=await api.post('/adminlogin',{email,password})
         
-      
+       console.log("Api Next",responces)
       if(responces.data) {
         setToken(responces.data.token)
         localStorage.setItem('token',responces.data.token)
-        axios.defaults.headers.common['Authorization']=responces.data.token
+      
+        api.defaults.headers.common['Authorization'] = responces.data.token;
+
+        console.log("Login Successfully")
+
         navigate('/admin/dashboard')
       }
      else{
-      toast.error("Login Issue")
+      console.log("Loing Error")
      }
     } catch (error) {
       
+      console.log("Api Error")
       toast.error(error.message)
     }
   }
+  
 
-
-  return (
+ return (
     <>
     <div className='flex items-center justify-center h-screen'>
       <div className='w-full max-w-sm p-6 max-md:m-6 border border-primary/30 shadow-xl shadow-primary/15 rounded-lg'>
