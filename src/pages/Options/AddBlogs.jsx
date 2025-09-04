@@ -11,23 +11,30 @@ const[subTitle,setSubTitle]=useState('')
 const[description,setDescription]=useState('')
 const[category,setCategory]=useState('')
 const[isPublished,setIsPublished]=useState(false)
-const[loading,setloading]=useState(false)
+const[isAdding,setIsAdding]=useState(false)
 
 
     const quillRef=useRef(false)
     const editRef=useRef()
 
   const handleSubmit=async(e)=>{
-      
        e.preventDefault()
+       setIsAdding(true)
       try {
+         const blog={ title,subTitle,description:quillRef.current.root.innerHTML,category,isPublished }
         
-        const {data}=await api.post('/blog/add',{image,title,subTitle,description,category,isPublished})
+         const formData = new FormData();
+         formData.append('blog',JSON.stringify(blog))
+
+         formData.append("image", image)
+        const {data}=await api.post('/blog/add',formData,{headers: { "Content-Type": "multipart/form-data" }})
+
+
 
         console.log(data)
 
       } catch (error) {
-        console.log(responces)
+        console.log("Error in AddBlog")
       }
   }
 
@@ -48,10 +55,11 @@ useEffect(()=>{
         <div >
         
           <h5 className='py-4'>Upload thumbnail</h5>
-         <label htmlFor="image">
-          <img src={!image?assets.upload_area:URL.createObjectURL(image)} alt="" className='cursor-pointer mt-2 h-16 rounded' />
-            <input type="file" id="image" hidden required className='hidden' onChange={(e)=>setImage(e.target.files[0])} />
-        </label>
+          <label htmlFor="image">
+            <img src={!image ? assets.upload_area : URL.createObjectURL(image)} alt="" className='cursor-pointer mt-2 h-16 rounded' />
+            <input type="file" id="image" hidden required onChange={(e) => setImage(e.target.files[0])} />
+          </label>
+
         </div>
 
         <div className=''>
@@ -68,7 +76,7 @@ useEffect(()=>{
             <h5 className='pt-2' >Blog Description</h5>
             <div  className='relative   w-3/4 h-74 pb-16  pt-2'>
            
-            <div ref={editRef} onChange={(e)=>setDescription(e.target.value)} ></div>
+            <div ref={editRef}  onChange={(e)=>setDescription(e.target.value)} ></div>
            
            <button className=' absolute cursor-pointer hover:underline bg-black/70 font-bold text-white py-1.5 px-1.5 ml-2 rounded-sm bottom-1 right-2'>Generate AI</button>
             </div>
@@ -88,11 +96,11 @@ useEffect(()=>{
 
         <div className='flex items-center gap-3 py-4'>
           <h5>Publish Now</h5>
-          <input type="checkbox" name="" id="" className='w-4 h-4 cursor-pointer'  onChange={(e)=>setIsPublished(e.target.value)}/>
+          <input type="checkbox" name="" id="" className='w-4 h-4 cursor-pointer'  onChange={(e)=>setIsPublished(e.target.checked)}/>
         </div>
 
-        <button  className='bg-primary text-white px-6 rounded-lg py-2 font-semibold cursor-pointer'>
-          Submit
+        <button disabled={isAdding} className='bg-primary text-white px-6 rounded-lg py-2 font-semibold cursor-pointer'>
+         {isAdding?"Adding...":"Add Blog"}
         </button>
       </form>
 
