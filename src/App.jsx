@@ -28,10 +28,9 @@ function App() {
         <Route path='/admin' element={true?<Layout/>:<AdminPage/>}>
         <Route index path='dashboard' element={<Dashboard/>}/>
         <Route  path='addblogs' element={<AddBlogs/>}/>
-        <Route path='bloglist' element={<BlogList/>}/>
-        <Route path='comments' element={<Comments/>}/>
-        <Route path='list' element={<List/>}/>
-        <Route path='commentslist' element={<CommentsList/>}/>
+        <Route path='bloglist' element={<List/>}/>
+        <Route path='comments' element={<CommentsList/>}/>
+    
         
         </Route>
       </Routes>

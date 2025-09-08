@@ -1,4 +1,3 @@
-import { List } from 'lucide-react'
 import { assets } from '../../assets/assets'
 import Quill from 'quill'
 import { useEffect, useRef, useState } from 'react'
@@ -39,13 +38,19 @@ const[isAdding,setIsAdding]=useState(false)
   }
 
 
+useEffect(() => {
+  if (!quillRef.current && editRef.current) {
+    quillRef.current = new Quill(editRef.current, { theme: 'snow' });
 
-useEffect(()=>{
-
-  if(!quillRef.current&&editRef.current){
-    quillRef.current=new Quill(editRef.current,{theme:'snow'})
+ 
+    quillRef.current.on('text-change', () => {
+      setDescription(quillRef.current.root.innerHTML);
+    });
   }
-},[])
+}, []);
+
+
+
   return (
 
       <div className='bg-blue-300/10 w-full h-250' >
@@ -76,8 +81,7 @@ useEffect(()=>{
             <h5 className='pt-2' >Blog Description</h5>
             <div  className='relative   w-3/4 h-74 pb-16  pt-2'>
            
-            <div ref={editRef}  onChange={(e)=>setDescription(e.target.value)} ></div>
-           
+            <div ref={editRef} ></div>
            <button className=' absolute cursor-pointer hover:underline bg-black/70 font-bold text-white py-1.5 px-1.5 ml-2 rounded-sm bottom-1 right-2'>Generate AI</button>
             </div>
         </div>

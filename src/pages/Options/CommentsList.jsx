@@ -1,13 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import { comments_data } from '../../assets/assets'
 import CommentsData from '../../components/Data/CommentsData'
+import { api } from '../../service/api'
 
 export default function CommentsList() {
 
 const [data,setData]=useState([])
 
 const fetchData=async()=>{
-  setData(comments_data)
+try {
+    const responces=await api.get("/comments/list")
+
+    setData(responces.data.list)
+    console.log(responces.data)
+
+} catch (error) {
+  console.log("Error in Comment List")
+}
+
+ 
 
 }
 

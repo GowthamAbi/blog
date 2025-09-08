@@ -6,19 +6,16 @@ import TableData from '../../components/Data/TableData'
 import { api } from '../../service/api'
 
 export const Dashboard = () => {
-  const [dashboardData, setDashboardData] = useState({
-    blog: 0,
-    comments: 0,
-    drafts: 0,
-    recentBlogs: []
-  })
+  const [blog, setBlog] = useState([])
+  const [comment,setComment]=useState([])
 
   const featchdashboard = async () => {
     try {
-      const data=await api.get('/admin/dashboard')
+      const responces=await api.get('/admin/dashboard')
 
-      setDashboardData(data)
-      console.log(data)
+      setBlog(responces.data.blog)
+      setComment(responces.data.comment)
+      
 
     } catch (error) {
       
@@ -37,7 +34,7 @@ export const Dashboard = () => {
         <div className="flex items-center gap-3 shadow-md rounded-md bg-white px-6 py-4 w-60">
           <img src={assets.dashboard_icon_1} className="w-10 h-10" alt="Blogs" />
           <div>
-            <p className="text-lg font-semibold">{dashboardData.blog}</p>
+            <p className="text-lg font-semibold">{blog.length}</p>
             <h5 className="text-gray-600">Blogs</h5>
           </div>
         </div>
@@ -45,7 +42,7 @@ export const Dashboard = () => {
         <div className="flex items-center gap-3 shadow-md rounded-md bg-white px-6 py-4 w-60">
           <img src={assets.dashboard_icon_2} className="w-10 h-10" alt="Comments" />
           <div>
-            <p className="text-lg font-semibold">{dashboardData.comments}</p>
+            <p className="text-lg font-semibold">{comment.length}</p>
             <h5 className="text-gray-600">Comments</h5>
           </div>
         </div>
@@ -53,7 +50,7 @@ export const Dashboard = () => {
         <div className="flex items-center gap-3 shadow-md rounded-md bg-white px-6 py-4 w-60">
           <img src={assets.dashboard_icon_3} className="w-10 h-10" alt="Drafts" />
           <div>
-            <p className="text-lg font-semibold">{dashboardData.drafts}</p>
+            <p className="text-lg font-semibold">Draft</p>
             <h5 className="text-gray-600">Drafts</h5>
           </div>
         </div>
@@ -78,8 +75,8 @@ export const Dashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {dashboardData.recentBlogs.length > 0 ? (
-              dashboardData.recentBlogs.map((blog, index) => (
+            {blog.length > 0 ? (
+              blog.map((blog, index) => (
                 <TableData
                   key={blog._id}
                   blog={blog}

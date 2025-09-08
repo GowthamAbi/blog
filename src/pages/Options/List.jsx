@@ -2,13 +2,18 @@ import React, { useEffect, useState } from 'react'
 import { blog_data } from '../../assets/assets'
 import { div } from 'motion/react-client'
 import Data from '../../components/Data/Data'
+import { api } from '../../service/api'
 
 export default function List() {
 
     const[data,setData]=useState([])
 
     const fetchData=async()=>{
-        setData(blog_data)
+
+        const responces=await api.get("/blog/get")
+        console.log(responces.data)
+        const Array=responces.data
+        setData(responces.data.allBlog)
     }
 
     useEffect(()=>{

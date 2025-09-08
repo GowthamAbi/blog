@@ -6,16 +6,32 @@ import Navbar from './Navbar'
 import moment from 'moment';
 import { Footer } from '../components/Footer'
 import Loader from '../components/Loader'
+import { api } from '../service/api'
+
 
 function Blog() {
   const {id}=useParams()
   const [data,setData]=useState(null)
+  const[comment,setComment]=useState('')
+  const[name,setName]=useState('')
+  const [commented,setCommented]=useState(false)
 
   const fatchData=async()=>{
     const data=blog_data.find(item=>item._id===id)
 
     setData(data)
   }
+
+const handleSubmit=async(e)=>{
+    e.preventDefault()
+    setCommented(true)
+  try {
+    const responces=await api.post("/comments",{name,comment})
+    console.log(responces.data)
+  } catch (error) {
+    console.log("Error in Comments")
+  }
+}
 
   useEffect(()=>{
     fatchData()
@@ -67,11 +83,12 @@ function Blog() {
 
         <div className='mx-auto lg:max-w-4xl sm:max-w-2xl  flex flex-col gap-6 '>
           <h1 className='font-bold text-lg'>Add Comments</h1>
-          <form className='flex flex-col gap-6   '>
-            <input type="text" placeholder='Name' className='border-1 border-gray-300 rounded px-2 py-4 focus:outline-none  focus:ring-0 lg:max-w-lg sm:max-w-lg'/>
-            <textarea type="text" placeholder='Your Comments' className='pb-14 border-gray-300 pt-4 px-2 border-1 rounded focus:outline-none  focus:ring-0 lg:max-w-lg sm:max-w-lg'/>
+          <form onSubmit={handleSubmit} className='flex flex-col gap-6   '>
+            <input type="text" onChange={(e)=>setName(e.target.value)} placeholder='Name' className='border-1 border-gray-300 rounded px-2 py-4 focus:outline-none  focus:ring-0 lg:max-w-lg sm:max-w-lg'/>
+            <textarea type="text"  onChange={(e)=>setComment(e.target.value)} placeholder='Your Comments' className='pb-14 border-gray-300 pt-4 px-2 border-1 rounded focus:outline-none  focus:ring-0 lg:max-w-lg sm:max-w-lg'/>
+            <button disabled={commented} className=' bg-primary w-30  px-4 py-2 rounded-sm text-white text-lg'>{commented?"Commented":"Submit"}</button> 
           </form>
-          <button className=' bg-primary w-30  px-4 py-2 rounded-sm text-white text-lg'>Submit</button>
+        
 
         </div>
 
