@@ -26,7 +26,7 @@ const handleSubmit=async(e)=>{
     e.preventDefault()
     setCommented(true)
   try {
-    const responces=await api.post("/comments",{name,comment})
+    const responces=await api.post(`/comments/${id}`,{name,comment})
     console.log(responces.data)
   } catch (error) {
     console.log("Error in Comments")
