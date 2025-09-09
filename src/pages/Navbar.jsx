@@ -20,12 +20,9 @@ const Navbar = () => {
     <>
     <div className='mx-4 border-b border-gray-200 '> 
         <div className=' flex justify-between items-center py-5 mx-8 cursor-pointer '>
-            <img onClick={()=>navigate('/')}  src={assets.logo} className='max-md:w-40 max-w-sm w-40' alt=""/>
+            <img onClick={()=>navigate('/')}  src={assets.logo} className='max-md:w-40 max-w-sm w-40 cursor-pointer' alt=""/>
             <button onClick={logout} className='bg-primary text-white  rounded-lg  py-2 px-8'>logout</button>
-           
         </div>
-       
-
     </div>
       
     </>

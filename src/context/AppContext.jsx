@@ -5,9 +5,6 @@ import axios from 'axios'
 import toast from "react-hot-toast";
 import { api } from "../service/api";
 
-
-
-
 const AppContext=createContext()
 
 export const AppProvider=({children})=>{
@@ -19,9 +16,11 @@ export const AppProvider=({children})=>{
 
     const fetchBlogs=async()=>{
         try {
-            const {data}=await api.get('/blog/get')
+     
+            const responces= await api.get("/blog/get")
+            console.log("AppContext:",responces.data.allBlog)
 
-            data.success?setBlogs(data):toast.error(data.message)
+         setBlogs([...blogs, ...responces.data.allBlog]) 
 
 
         } catch (error) {
@@ -34,14 +33,13 @@ export const AppProvider=({children})=>{
         fetchBlogs()
 
         const token=localStorage.getItem('token')
-        
-
         if(token){
             setToken(token)
             axios.defaults.headers.common['Authorization']=`${token}`
         }
 
     },[])
+
     const value={axios,navigate,token,setToken,blogs,setBlogs,input,setInput}
     return(
         <AppContext.Provider value={value}>
