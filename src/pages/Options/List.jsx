@@ -12,7 +12,6 @@ export default function List() {
 
         const responces=await api.get("/blog/get")
         console.log(responces.data)
-        const Array=responces.data
         setData(responces.data.allBlog)
     }
 
