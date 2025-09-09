@@ -15,6 +15,7 @@ function Blog() {
   const[comment,setComment]=useState('')
   const[name,setName]=useState('')
   const [commented,setCommented]=useState(false)
+  const[commentsData,setCommentsData]=useState(null)
 
   const fatchData=async()=>{
     const data=blog_data.find(item=>item._id===id)
@@ -26,15 +27,32 @@ const handleSubmit=async(e)=>{
     e.preventDefault()
     setCommented(true)
   try {
-    const responces=await api.post(`/comments/${id}`,{name,comment})
+    const responces=await api.post(`/comments/add`,{name,comment,id})
     console.log(responces.data)
+    console.log(id)
   } catch (error) {
     console.log("Error in Comments")
   }
 }
 
+const comment_Data=async()=>{
+  try {
+    const responces=await api.get('/comments/list')
+
+    setCommentsData(responces.data)    
+
+    console.log(responces.data)
+    console.log("comments:"+commentsData.data)
+
+  } catch (error) {
+    console.log("Error in Comments FatchData")
+  }
+}
+
   useEffect(()=>{
-    fatchData()
+    fatchData(),
+    comment_Data()
+  
   },[])
 
   return ( 
@@ -65,7 +83,7 @@ const handleSubmit=async(e)=>{
             <div className='flex flex-col gap-4  '>
               
               {
-                comments_data.map((item,index)=>(
+                commentsData.data.map((item,index)=>(
                   <div key={index} className='relative  bg-primary/2 border border-primary/5 max-w-sm p-4 text-gray-600'>
                     <div className='flex items-center gap-2 mb-2'>
                       <img src={assets.user_icon} className='w-6'/>
