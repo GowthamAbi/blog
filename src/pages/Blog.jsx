@@ -16,7 +16,7 @@ function Blog() {
   const[comment,setComment]=useState('')
   const[name,setName]=useState('')
   const [commented,setCommented]=useState(false)
-  const[commnets,setComments]=useState([])
+  const[comments,setComments]=useState([])
 
  const{blogs}=useAppContext()
 
@@ -83,11 +83,11 @@ const commentData=async()=>{
 
         <div>
           <div className='mx-auto lg:max-w-4xl sm:max-w-2xl mt-14 mb-10'>
-            <p className='-'>Comments( {commnets.length} )</p>
+            <p className='-'>Comments({comments.filter((c) => c.blog_id === id).length})</p>
             <div className='flex flex-col gap-4  '>
               
               {
-                commnets.filter((blog=>blog.id===id)).map((item,index)=>(
+                comments.filter((commnet=>commnet.blog_id===id)).map((item,index)=>(
                   <div key={index} className='relative  bg-primary/2 border border-primary/5 max-w-sm p-4 text-gray-600'>
                     <div className='flex items-center gap-2 mb-2'>
                       <img src={assets.user_icon} className='w-6'/>
