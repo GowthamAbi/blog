@@ -21,7 +21,7 @@ function App() {
       <Toaster/>
       <Routes>
         <Route path='/' element={<Home/>}/>
-        <Route path='/blog/:id' element={<Blog/>}/>
+        <Route path='/blog/get/:id' element={<Blog/>}/>
         <Route path='/adminlogin' element={<AdminPage/>}/>
         <Route path='/admin' element={true?<Layout/>:<AdminPage/>}>
         <Route index path='dashboard' element={<Dashboard/>}/>

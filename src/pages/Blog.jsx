@@ -7,6 +7,7 @@ import moment from 'moment';
 import { Footer } from '../components/Footer'
 import Loader from '../components/Loader'
 import { api } from '../service/api'
+import { useAppContext } from '../context/AppContext'
 
 
 function Blog() {
@@ -17,8 +18,10 @@ function Blog() {
   const [commented,setCommented]=useState(false)
   const[commnets,setComments]=useState([])
 
+ const{blogs}=useAppContext()
+
   const fatchData=async()=>{
-    const data=blog_data.find(item=>item._id===id)
+    const data=blogs.find(item=>item._id===id)
 
     setData(data)
   }

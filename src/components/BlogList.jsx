@@ -8,7 +8,6 @@ export const BlogList = () => {
 
     const list=['All', 'Technology', 'Startup', 'Lifestyle', 'Finance']
 
-
     const[menu,setMenu]=useState('All')
 
     const{blogs}=useAppContext()
@@ -22,14 +21,15 @@ export const BlogList = () => {
                 <div key={index} className='relative'>
                 <button  onClick={()=>{setMenu(item.category)}} className={` text-gray-500
                   cursor-pointer ${menu===item.category && 'text-white px-4 pt-0.5'}`}>
-                    {item.title}
+                    {item.category}
                     {
                          menu===item.category&&(<motion.div layoutId='underline' 
                         transition={{type:'spring',stiffness:500,damping:30}}
                          className='bg-primary absolute left-0 right-0 top-0 h-7 -z-1 rounded-full'>
                         </motion.div>)
-                    }</button>
-                    <h1>{menu}</h1>
+                    }
+                    </button>
+                    <h1>{console.log(item.category)}</h1>
                     </div>))}
         </div>
         <div  className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  xl:grid-cols-4 gap-8 mb-24 mx-8 sm:mx-16 xl:mx-40 '>
