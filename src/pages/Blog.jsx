@@ -66,7 +66,7 @@ const commentData=async()=>{
         <Navbar/>
         
         <div className='relative'>
-          <img src={assets.gradientBackground} className='absolute  -top-15 opacity-50 ' />
+          <img src={assets.gradientBackground} className='absolute  -top-15 opacity-50 h-200 ' />
           <div className='text-center mt-8 leading-10'>
             <h5 className='text-primary font-bold  text-lg'>Published on {moment(`${data.createdAt}`).format('MMMM Do YYYY')}</h5>
             <h1 className='lg:text-5xl max-w-2xl mx-auto md:text-2xl font-bold p-2 '  >{data.title}</h1>
@@ -87,7 +87,7 @@ const commentData=async()=>{
             <div className='flex flex-col gap-4  '>
               
               {
-                commnets.map((item,index)=>(
+                commnets.filter((blog=>blog.id===id)).map((item,index)=>(
                   <div key={index} className='relative  bg-primary/2 border border-primary/5 max-w-sm p-4 text-gray-600'>
                     <div className='flex items-center gap-2 mb-2'>
                       <img src={assets.user_icon} className='w-6'/>
