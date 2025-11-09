@@ -49,9 +49,9 @@ function AdminPage() {
       <h5 className='text-center'>Enter your credentials to access the admin panel</h5>
       <form className='flex flex-col py-8 leading-10 ' onSubmit={handleSubmit}>
         <label >Email</label>
-        <input type="email" className='focus:outline-none focus:border-none focus:ring-0 border-b-2 border-primary/15' placeholder='Enter Mail' onChange={(e)=>{setEmail(e.target.value)}}/>
+        <input value="admin@gmail.com" type="email" className='focus:outline-none focus:border-none focus:ring-0 border-b-2 border-primary/15' placeholder='Enter Mail' onChange={(e)=>{setEmail(e.target.value)}}/>
         <label >Password</label>
-        <input type="password" placeholder='Enter Password' className='focus:outline-none  focus:ring-0 border-b-2 border-primary/15' onChange={(e)=>{setPassword(e.target.value)}}/>
+        <input value="123456" type="password" placeholder='Enter Password' className='focus:outline-none  focus:ring-0 border-b-2 border-primary/15' onChange={(e)=>{setPassword(e.target.value)}}/>
       
       
       <button type='submit'  className=' flex items-center justify-center w-full bg-primary p-2 rounded-sm
